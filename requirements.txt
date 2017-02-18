@@ -1,0 +1,18 @@
+- Requirement
+GUI
+User system/verification (User preferences with manual control/customizable)
+
+
+Security (locks, alarm notification)
+Temperature control
+Appliance control (lights)
+Scheduling (when to dim lights, reminders)
+Motion sensor
+Time logging feature
+
+- Maybe
+Garage door
+Monitoring/webcam/camera
+Mail/guest detection
+Phone app
+Energy management
