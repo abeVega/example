@@ -1,18 +1,22 @@
-- Requirement
+Requirement
 GUI
-User system/verification (User preferences with manual control/customizable)
+User system/verification (User preferences with manual control/customizable) 
+
+-Security (locks, alarm notification)
+-Temperature control
+-Scheduling (when to dim lights, reminder)
+-Appliance control (lights)
+-Time logging feature
+-Monitoring/webcam/camera
 
 
-Security (locks, alarm notification)
-Temperature control
-Appliance control (lights)
-Scheduling (when to dim lights, reminders)
-Motion sensor
-Time logging feature
+Users will be able to control appliances such as their oven, lights, and air conditioner, and also be able to schedule the use of these features. A security system will also notify users of unauthorized entry and of fire alarms. Webcam monitoring will be available so that users may monitor their home at any time. A time logging feature will also allow users to view a log of their home automation actions. 
 
-- Maybe
-Garage door
-Monitoring/webcam/camera
-Mail/guest detection
-Phone app
-Energy management
+
+
+
+Maybe
+-Garage door
+-Mail/guest detection
+-Phone app
+-Energy management
