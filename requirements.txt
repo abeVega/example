@@ -9,11 +9,7 @@ User system/verification (User preferences with manual control/customizable)
 -Time logging feature
 -Monitoring/webcam/camera
 
-
-Users will be able to control appliances such as their oven, lights, and air conditioner, and also be able to schedule the use of these features. A security system will also notify users of unauthorized entry and of fire alarms. Webcam monitoring will be available so that users may monitor their home at any time. A time logging feature will also allow users to view a log of their home automation actions. 
-
-
-
+Users will be able to control appliances such as their oven, lights, and air conditioner, and also be able to schedule the use of these features. A security system will also notify users of unauthorized entry and of fire alarms. Webcam monitoring will be available so that users may monitor their home at any time. A time logging feature will also allow users to view a log of their home automation actions. All these features will be available through a GUI with a user system in place.
 
 Maybe
 -Garage door
