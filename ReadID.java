@@ -3,7 +3,10 @@ import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class ReadID {
 
@@ -54,18 +57,34 @@ public class ReadID {
 //		    }
 		    
 		    List<Integer> acceptID = new ArrayList<Integer>();
-		    for(int i =0; i < listID.size();i++){
-		    	if( listID.get(i).equals(intCheckList.get(i))){
-		    		System.out.println("This id is acceptable " +  listID.get(i));
-		    		acceptID.add(numb[i]);
+		    
+		    for (Integer igr : listID) {
+		        if (intCheckList.contains(igr)) {
+		        	System.out.println("This id is acceptable " +  igr);
+		            acceptID.add(igr);
+		        }else{
+		    		System.out.println("Error ! " + " This id is not acceptable " + igr);
 		    	}
-		    	
-		    	else{
-		    		System.out.println("Error ! " + " This id is not acceptable " + id.get(i));
-		    	}		    	
 		    }
+		  
+		    
+		    System.out.println("\n");
+		    
+		    
+	    	System.out.println("List of IDs that acceptable ");
+
+		    String[] status = {"admin","guest","house member"};
+	    
+
 		    for(int i =0; i < acceptID.size();i++){
-		    	System.out.println("List of IDs that acceptable " + id.get(i));
+		    	if(id.get(i) == "34844")
+		    	System.out.println( id.get(i) + " -- " + status[0]);
+		    	else if(id.get(i) == "28745"){
+			    	System.out.println( id.get(i) + " -- " + status[2]);
+		    	}
+		    	else {
+		    		System.out.println( id.get(i) + " -- " + status[1]);
+		    	}
 		    }
 		    
 				   
