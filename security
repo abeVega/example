@@ -1,0 +1,70 @@
+import java.io.File;
+import java.io.IOException;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.util.ArrayList;
+import java.util.List;
+
+public class ReadID {
+
+	public static void main(String[] args) throws IOException {
+
+		 List<String> list = new ArrayList<String>(); 
+		    List<String> id = new ArrayList<String>();
+		    File file = new File("id.txt");
+		    if(file.exists()){
+		        try { 
+		            list = Files.readAllLines(file.toPath(),Charset.defaultCharset());
+		        } catch (IOException ex) {
+		            ex.printStackTrace();
+		        }
+		     
+		    }
+		    for(String line : list){
+		        String [] res = line.split(",");
+		        id.add(res[1]);
+		        
+		    }
+		    
+		    List<Integer> listID = new ArrayList<Integer>();
+		    for(String s : id){
+		    	listID.add(Integer.valueOf(s));
+		    }
+
+		    
+		    
+		    int[] numb = {34844, 28745, 44127};
+		    List<Integer> intList = new ArrayList<Integer>();
+		    for (int index = 0; index < numb.length; index++){
+		        intList.add(numb[index]);
+		    }
+		    
+		    for(int i =0; i< intList.size();i++){
+		    	System.out.println(intList.get(i));
+		    }
+		    
+		    // check id 
+//		    int count = 1;
+//		    for(int i =0; i < id.size();i++){
+//		   
+//		    
+//		    System.out.print("ID " + count + " : ");
+//		    
+//		    System.out.print( id.get(i));
+//		    System.out.println( "");
+//		    count++;
+//		    }
+		    
+		    for(int i =0; i < id.size();i++){
+		    	if( intList.get(i) == listID.get(i)){
+		    		System.out.println("This id is acceptable " +  id.get(i));
+		    	}
+		    	else{
+		    		System.out.println("This id is not acceptable " + id.get(i));
+		    	}
+		    	
+		    }
+				   
+	}
+
+}
