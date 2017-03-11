@@ -34,9 +34,9 @@ public class ReadID {
 		    
 		    
 		    int[] numb = {34844, 28745, 44127};
-		    List<Integer> intList = new ArrayList<Integer>();
-		    for (int index = 0; index < numb.length; index++){
-		        intList.add(numb[index]);
+		    List<Integer> intCheckList = new ArrayList<Integer>();
+		    for (int i = 0; i < numb.length; i++){
+		    	intCheckList.add(numb[i]);
 		    }
 		    
 		   
@@ -53,15 +53,21 @@ public class ReadID {
 //		    count++;
 //		    }
 		    
-		    for(int i =0; i < id.size();i++){
-		    	if( listID.get(i).equals(intList.get(i))){
-		    		System.out.println("This id is acceptable " +  id.get(i));
-		    	}
-		    	else{
-		    		System.out.println("This id is not acceptable " + id.get(i));
+		    List<Integer> acceptID = new ArrayList<Integer>();
+		    for(int i =0; i < listID.size();i++){
+		    	if( listID.get(i).equals(intCheckList.get(i))){
+		    		System.out.println("This id is acceptable " +  listID.get(i));
+		    		acceptID.add(numb[i]);
 		    	}
 		    	
+		    	else{
+		    		System.out.println("Error ! " + " This id is not acceptable " + id.get(i));
+		    	}		    	
 		    }
+		    for(int i =0; i < acceptID.size();i++){
+		    	System.out.println("List of IDs that acceptable " + id.get(i));
+		    }
+		    
 				   
 	}
 
