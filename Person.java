@@ -3,11 +3,13 @@ package source;
 public abstract class Person
 {
 	protected String firstName, lastName;
+	protected int id;
 	
 	public Person(){}
 	
-	public Person(String firstNameIn, String lastNameIn)
+	public Person(int idIn,String firstNameIn, String lastNameIn)
 	{
+		id = idIn;
 		firstName = firstNameIn;
 		lastName = lastNameIn;
 	}
@@ -18,6 +20,10 @@ public abstract class Person
 		{
 			return firstName;
 		}
+	public int getID()
+		{
+			return id;
+		}
 		
 		public String getLastName()
 		{
@@ -27,6 +33,11 @@ public abstract class Person
 	//============SETTERS============
 		
 		public void setFirstName(String firstName)
+		{
+			this.firstName =firstName;
+		}
+	
+		public void setID(String firstName)
 		{
 			this.firstName =firstName;
 		}
