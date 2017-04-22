@@ -219,51 +219,74 @@ public class GUI extends JFrame {
 		
 		
 		
+		//Front Yard
+		JEditorPane FrontYard = new JEditorPane();
+		FrontYard.setText("Front Yard");
+		FrontYard.setEditable(false);
+		FrontYard.setBackground(Color.LIGHT_GRAY);
+		
+		JEditorPane Backyard = new JEditorPane();
+		Backyard.setText("Backyard");
+		Backyard.setEditable(false);
+		Backyard.setBackground(Color.LIGHT_GRAY);
+		
+		
+		
 		
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(Temperature)
-					.addContainerGap(340, Short.MAX_VALUE))
-				.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
-					.addContainerGap(56, Short.MAX_VALUE)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addComponent(Bathroom, GroupLayout.PREFERRED_SIZE, 73, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(Bedroom, 0, 0, Short.MAX_VALUE))
-						.addComponent(Schedule, Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 105, GroupLayout.PREFERRED_SIZE)
-						.addComponent(LivingRoom, Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE))
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(82)
-							.addComponent(btnNewButton))
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addComponent(Garage, GroupLayout.PREFERRED_SIZE, 94, GroupLayout.PREFERRED_SIZE)
-								.addComponent(Kitchen, GroupLayout.PREFERRED_SIZE, 65, GroupLayout.PREFERRED_SIZE))))
-					.addGap(101))
-		);
-		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addContainerGap()
 					.addComponent(Temperature)
-					.addGap(41)
+					.addContainerGap(340, Short.MAX_VALUE))
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGap(126)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+						.addComponent(FrontYard, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 285, Short.MAX_VALUE)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+								.addGroup(gl_contentPane.createSequentialGroup()
+									.addComponent(Bathroom, GroupLayout.PREFERRED_SIZE, 73, GroupLayout.PREFERRED_SIZE)
+									.addPreferredGap(ComponentPlacement.RELATED)
+									.addComponent(Bedroom, 0, 0, Short.MAX_VALUE))
+								.addComponent(Schedule, GroupLayout.PREFERRED_SIZE, 105, GroupLayout.PREFERRED_SIZE)
+								.addComponent(LivingRoom, GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE))
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+								.addGroup(gl_contentPane.createSequentialGroup()
+									.addGap(82)
+									.addComponent(btnNewButton))
+								.addGroup(gl_contentPane.createSequentialGroup()
+									.addPreferredGap(ComponentPlacement.RELATED)
+									.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+										.addComponent(Kitchen, GroupLayout.PREFERRED_SIZE, 94, Short.MAX_VALUE)
+										.addComponent(Backyard, 0, 0, Short.MAX_VALUE)
+										.addComponent(Garage, GroupLayout.PREFERRED_SIZE, 94, Short.MAX_VALUE))))))
+					.addGap(31))
+		);
+		gl_contentPane.setVerticalGroup(
+			gl_contentPane.createParallelGroup(Alignment.TRAILING)
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addContainerGap()
+							.addComponent(Temperature))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(27)
+							.addComponent(FrontYard, GroupLayout.PREFERRED_SIZE, 55, GroupLayout.PREFERRED_SIZE)))
+					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addComponent(Garage, GroupLayout.PREFERRED_SIZE, 44, GroupLayout.PREFERRED_SIZE)
 							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(Kitchen))
+							.addComponent(Kitchen, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE))
 						.addComponent(LivingRoom, GroupLayout.PREFERRED_SIZE, 83, GroupLayout.PREFERRED_SIZE))
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
-						.addComponent(Bedroom)
-						.addComponent(Bathroom, GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE))
-					.addPreferredGap(ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+						.addComponent(Bathroom, GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE)
+						.addComponent(Backyard)
+						.addComponent(Bedroom))
+					.addPreferredGap(ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
 						.addComponent(Schedule, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(btnNewButton))
