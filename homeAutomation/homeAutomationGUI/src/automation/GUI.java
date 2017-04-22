@@ -37,21 +37,11 @@ import javax.swing.event.PopupMenuEvent;
 public class GUI extends JFrame {
 	int temp = 70;
 	int livTemp = temp;
-	int inputTemp = 0;
-	int holder = 0;
-	
-	int kitColor, livColor, garColor, bathColor, bedColor = 0;
-	
+	int holder, inputTemp, kitColor, livColor, garColor, bathColor, bedColor = 0;
 	
 	private JPanel contentPane;
-	/**
-	 * @wbp.nonvisual location=372,239
-	 */
 	private final Panel panel = new Panel();
 
-	/**
-	 * Launch the application.
-	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -65,9 +55,7 @@ public class GUI extends JFrame {
 		});
 	}
 
-	/**
-	 * Create the frame.
-	 */
+	//Creates the frame
 	public GUI() {
 		JEditorPane LivingRoom = new JEditorPane();
 		LivingRoom.addMouseListener(new MouseAdapter() {
@@ -85,6 +73,7 @@ public class GUI extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		
+		//Quit Button
 		JButton btnNewButton = new JButton("Quit");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -95,7 +84,7 @@ public class GUI extends JFrame {
 		
 		//Appliance Control
 		JLabel Temperature = new JLabel("Temperature: " + temp +"°F");
-		String[] appliances = { "A/C", "TV", "Music", "Laundry" };
+		String[] appliances = { "A/C", "TV", "Entertainment", "Appliances" };
 		JComboBox Schedule = new JComboBox(appliances);
 		
 		Schedule.addActionListener(new ActionListener(){
@@ -112,9 +101,17 @@ public class GUI extends JFrame {
 					LivingRoom.setText("Living Room\r\n\r\n\r\nTemp: " + livTemp + "°F");
 					
 				}
-				
 				//Lights Scheduling Options
 				if(selectedAppliance == "Lights"){
+				}
+				
+				//Entertainment Scheduling Options
+				if(selectedAppliance == "Entertainment"){
+				}
+				
+				//Appliances Options
+				if(selectedAppliance == "Appliances"){
+					//This will open menu (maybe JavaFX) with different appliances, e.g., toaster, dishwasher, 
 				}
 			}
 		});
