@@ -23,7 +23,7 @@ public BlackList(){}
 	
 	public String toString(){
   	  String output= "" ;
-	       output +=  "ID : " + " " + this.id ;   
+	       output +=  "ID : " + " " + this.id + "\n" ;   
 			return output;
   	
   }

@@ -15,7 +15,7 @@ public class DataBaseID {
      public void printDatabase(){  	
     	 System.out.println(" ");
     	 System.out.println("All BlackList IDs" + "\n" +
-                             "\n" + this.bl );	 
+                             "\n" + this.bl + "\n" );	 
     	 
     	 
      }
