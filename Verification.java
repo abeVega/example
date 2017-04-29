@@ -9,13 +9,14 @@ public class Verification {
 		@SuppressWarnings("resource")
 		Scanner scanner = new Scanner(System.in);
 		ArrayList<Person> ArrPerson = new ArrayList<Person>();
-		Person admin = new Person(1, "Admin", "Admin");
+		Person admin = new Person(1,44127, "Admin", "Admin");
 		ArrPerson.add(admin);
 		DataBase data1 = new DataBase(ArrPerson);
 		
 		ArrayList<BlackList> ArrBlackList = new ArrayList<BlackList>();
 		BlackList bl1 = new BlackList(28745);
 		ArrBlackList.add(bl1);
+		DataBaseID dataBL = new DataBaseID(ArrBlackList);
 		
 		System.out.println("House Panel");
 		System.out.println("Press 1 for admin page, 2 for guest page");
@@ -51,7 +52,8 @@ public class Verification {
 	 
 		while (access == true) {
 			System.out.println(
-					"Press 1 to create an account, 2 to open a list of accounts , 3 to change user's information , 4 to check blacklist IDs, 5 to go to user panel , 6 to exit");
+					"Press 1 to create an account, 2 to open list of accounts , 3 to change user's information , 4 to check blacklist pass code,"
+					+ "5 to delete user account , 6 to go to user panel , 7 to exit");
 			int choice = scanner.nextInt();
 
 			if (choice == 1) {
@@ -66,16 +68,19 @@ public class Verification {
 
 				int id = admin.id + 1;
 				String f, l;
+				Integer passC;
 
 				while (count >0) {
-
+					System.out.println("Enter pass code " + guestC + " : ");
+				    scanner.nextLine();
+				    passC = scanner.nextInt();
 					System.out.println("Enter First Name " + guestC + " : ");
 				    scanner.nextLine();
 				    f = scanner.nextLine();
 					System.out.println("Enter Last Name " + guestC + " : ");
 					l = scanner.nextLine();
 
-					Person test = new Person(id, f, l);
+					Person test = new Person(id,passC, f, l);
 					ArrPerson.add(test);
 
 					id++;
@@ -88,7 +93,7 @@ public class Verification {
 			}
 			if (choice == 3) {
 				String changeF,changeL;
-				System.out.println("Enter an ID number to change user account information ");
+				System.out.println("Enter an ID number to change user account infor ");
 				Integer idNumb = scanner.nextInt();
 
 				data1.displayByID(idNumb);
@@ -107,14 +112,19 @@ public class Verification {
 				data1.printDatabase();
 			}
 			if(choice ==4){
-				DataBaseID dataBL = new DataBaseID(ArrBlackList);
+				
 				dataBL.printDatabase();
 			}
 			if(choice ==5){
+				System.out.println("Enter an ID number to change user account infor ");
+				Integer idNumb = scanner.nextInt();
+				data1.delete(idNumb);
+			}
+			if(choice ==6){
 				System.out.println("Guest Panel");
 				break;
 			}
-			if (choice == 6) {
+			if (choice == 7) {
 				System.out.println("Exit");
 				break;
 			}

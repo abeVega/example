@@ -2,16 +2,17 @@
 
 public   class Person{
 	protected String firstName, lastName;
-	protected Integer id;
+	protected Integer id,passCode;
 
 
 
 	public Person(){}
 	
-	public Person(int id,String firstName, String lastName){
+	public Person(int id,int passCode,String firstName, String lastName){
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
+		this.passCode = passCode;
 	}
 
 	
@@ -29,6 +30,9 @@ public   class Person{
 			return lastName;
 		}
 		
+		public int getPassCode(){
+			return passCode;
+		}
 		
 		public void setFirstName(String firstName)
 		{
@@ -44,6 +48,9 @@ public   class Person{
 		{
 			this.lastName = lastName;
 		}
+		public void setPassCode(Integer passCode){
+			this.passCode = passCode;
+		}
 		
 		public String toString(int a){
 			String output= "" ;
@@ -53,7 +60,7 @@ public   class Person{
 		
 		 public String toString(){
 	    	  String output= "" ;
-		       output +=  "ID : " + " " + this.id + "\n" + "First Name : " + this.firstName + "\n" +
+		       output +=  "ID : " + " " + this.id + "\n" + "Pass Code : " + " " + this.passCode + "\n" + "First Name : " + this.firstName + "\n" +
 		    		   "Last Name : "+" " + this.lastName + "\n"  ;   
 				return output;
 	    	

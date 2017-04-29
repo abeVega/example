@@ -30,6 +30,15 @@ public class DataBase {
 				((Person) item).setLastName(a);
 		}
 	}
+	
+	public void delete(int a){
+		for (Person item : this.person) {
+			if( item.getID() ==( a ) ){
+                this.person.remove( item );
+                break;
+			}
+			}
+	}
 
 	public void displayByID(int a) {
 		System.out.println(" ");

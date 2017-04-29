@@ -1,29 +1,29 @@
 
 public class BlackList {
-	protected Integer id;
+	protected Integer passCode;
 	
 public BlackList(){}
 	
-	public BlackList(int id)
+	public BlackList(int passCode)
 	{
-		this.id = id;
+		this.passCode = passCode;
 
 	}
 	
-	public Integer getId()
+	public Integer getpassCode()
 	{
-		return id;
+		return passCode;
 	}
 	
 	
-	public void setId(Integer id)
+	public void setpassCode(Integer passCode)
 	{
-		this.id = id;
+		this.passCode = passCode;
 	}
 	
 	public String toString(){
   	  String output= "" ;
-	       output +=  "ID : " + " " + this.id + "\n" ;   
+	       output +=  "Pass Code : " + " " + this.passCode + "\n" ;   
 			return output;
   	
   }
