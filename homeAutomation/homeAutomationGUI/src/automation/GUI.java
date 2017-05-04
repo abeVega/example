@@ -11,8 +11,12 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
 import java.awt.FlowLayout;
+import java.awt.Image;
+
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
+import javax.swing.ImageIcon;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JList;
@@ -21,6 +25,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JLabel;
 import javax.swing.DefaultComboBoxModel;
 import java.awt.Panel;
+import java.awt.Toolkit;
 import java.awt.Color;
 import javax.swing.JTable;
 import javax.swing.JEditorPane;
@@ -28,15 +33,20 @@ import javax.swing.JPopupMenu;
 import java.awt.Component;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.File;
+import java.net.MalformedURLException;
+import java.net.URL;
+
 import javax.swing.event.PopupMenuListener;
 
 import javafx.application.Platform;
 
 import javax.swing.event.PopupMenuEvent;
+import javax.swing.JTextArea;
 
 public class GUI extends JFrame {
 	int temp = 70;
-	int livTemp = temp;
+	int bathTemp = 75, garageTemp = 70, kitchenTemp = 76, livTemp = 70;
 	int holder, inputTemp, kitColor, livColor, garColor, bathColor, bedColor = 0;
 	
 	private JPanel contentPane;
@@ -66,24 +76,11 @@ public class GUI extends JFrame {
 			}
 		});
 		
-		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 468, 344);
+		setBounds(100, 100, 735, 523);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		
-		//Quit Button
-		JButton btnNewButton = new JButton("Quit");
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				System.exit(0);
-			}
-		});
-		
-		
-		//Appliance Control
-		JLabel Temperature = new JLabel("Temperature: " + temp +"°F");
 		String[] appliances = { "A/C", "TV", "Entertainment", "Appliances" };
 		JComboBox Schedule = new JComboBox(appliances);
 		
@@ -97,7 +94,6 @@ public class GUI extends JFrame {
 					tempControl.main(appliances);
 					temp = tempControl.returnTemp();
 					livTemp = temp;
-					Temperature.setText("Temperature: " + temp +"°F");
 					LivingRoom.setText("Living Room\r\n\r\n\r\nTemp: " + livTemp + "°F");
 					
 				}
@@ -119,7 +115,6 @@ public class GUI extends JFrame {
 		//Living Room
 		LivingRoom.setEditable(false);
 		LivingRoom.setBackground(Color.LIGHT_GRAY);
-		LivingRoom.setText("Living Room\r\n\r\n\r\nTemp: " + livTemp + "°F");
 		LivingRoom.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -136,24 +131,28 @@ public class GUI extends JFrame {
 		
 		//Bathroom
 		JEditorPane Bathroom = new JEditorPane();
+		java.net.URL url1 = getClass().getResource("imgres.png");
+		java.net.URL url2 = getClass().getResource("imgres2.png");
+		Bathroom.setContentType("text/html");
+		Bathroom.setText("<html><body>Bathroom " + bathTemp + "&#8457;<br /><img src='" + url1 + "'></body></html>");
+		
 		Bathroom.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if(bathColor == 1){
-					Bathroom.setBackground(Color.LIGHT_GRAY);
+					//Bathroom.setBackground(Color.LIGHT_GRAY);
+					Bathroom.setText("<html><body style='color: #ffffff;'>Bathroom " + bathTemp + "&#8457;<br /><img src='" + url1 + "'></body></html>");
 					bathColor = 0;
 				}
 				else if(bathColor == 0){
-					Bathroom.setBackground(Color.ORANGE);
+					//Bathroom.setBackground(Color.ORANGE);
+					Bathroom.setText("<html><body style='color: #ffffff;'>Bathroom " + bathTemp + "&#8457;<br /><img style ='filter: brightness(50%)'; src='" + url2 + "'></body></html>");
 					bathColor = 1;
 				}
 			}
 		});
 		Bathroom.setEditable(false);
 		Bathroom.setBackground(Color.LIGHT_GRAY);
-		Bathroom.setText("Bathroom");
-		
-		
 		
 		//Bedroom
 		JEditorPane Bedroom = new JEditorPane();
@@ -230,67 +229,69 @@ public class GUI extends JFrame {
 		Backyard.setEditable(false);
 		Backyard.setBackground(Color.LIGHT_GRAY);
 		
+		ImageIcon icon = createImageIcon("imgres.png", "title");
+		
+		JTextArea textArea = new JTextArea(
+				"What you type in here appears in the JTextArea"
+				);
+		textArea.setLineWrap(true);
+		textArea.setEditable(false);
+		
+		
 		
 		
 		
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
-			gl_contentPane.createParallelGroup(Alignment.TRAILING)
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(Temperature)
-					.addContainerGap(340, Short.MAX_VALUE))
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(126)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
-						.addComponent(FrontYard, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 285, Short.MAX_VALUE)
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addGroup(gl_contentPane.createSequentialGroup()
-									.addComponent(Bathroom, GroupLayout.PREFERRED_SIZE, 73, GroupLayout.PREFERRED_SIZE)
-									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(Bedroom, 0, 0, Short.MAX_VALUE))
-								.addComponent(Schedule, GroupLayout.PREFERRED_SIZE, 105, GroupLayout.PREFERRED_SIZE)
-								.addComponent(LivingRoom, GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE))
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addGroup(gl_contentPane.createSequentialGroup()
-									.addGap(82)
-									.addComponent(btnNewButton))
-								.addGroup(gl_contentPane.createSequentialGroup()
-									.addPreferredGap(ComponentPlacement.RELATED)
-									.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-										.addComponent(Kitchen, GroupLayout.PREFERRED_SIZE, 94, Short.MAX_VALUE)
-										.addComponent(Backyard, 0, 0, Short.MAX_VALUE)
-										.addComponent(Garage, GroupLayout.PREFERRED_SIZE, 94, Short.MAX_VALUE))))))
-					.addGap(31))
-		);
-		gl_contentPane.setVerticalGroup(
-			gl_contentPane.createParallelGroup(Alignment.TRAILING)
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addContainerGap()
-							.addComponent(Temperature))
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(27)
-							.addComponent(FrontYard, GroupLayout.PREFERRED_SIZE, 55, GroupLayout.PREFERRED_SIZE)))
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addComponent(Garage, GroupLayout.PREFERRED_SIZE, 44, GroupLayout.PREFERRED_SIZE)
+							.addComponent(textArea, GroupLayout.PREFERRED_SIZE, 203, GroupLayout.PREFERRED_SIZE)
 							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(Kitchen, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE))
-						.addComponent(LivingRoom, GroupLayout.PREFERRED_SIZE, 83, GroupLayout.PREFERRED_SIZE))
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
+								.addGroup(gl_contentPane.createSequentialGroup()
+									.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+										.addGroup(gl_contentPane.createSequentialGroup()
+											.addComponent(Bathroom, GroupLayout.PREFERRED_SIZE, 116, GroupLayout.PREFERRED_SIZE)
+											.addPreferredGap(ComponentPlacement.RELATED)
+											.addComponent(Bedroom, 0, 0, Short.MAX_VALUE))
+										.addComponent(LivingRoom, GroupLayout.PREFERRED_SIZE, 275, GroupLayout.PREFERRED_SIZE))
+									.addPreferredGap(ComponentPlacement.RELATED)
+									.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+										.addComponent(Backyard, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+										.addComponent(Garage, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+										.addComponent(Kitchen, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+								.addComponent(FrontYard, 0, 0, Short.MAX_VALUE)))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(139)
+							.addComponent(Schedule, GroupLayout.PREFERRED_SIZE, 105, GroupLayout.PREFERRED_SIZE)))
+					.addContainerGap(103, Short.MAX_VALUE))
+		);
+		gl_contentPane.setVerticalGroup(
+			gl_contentPane.createParallelGroup(Alignment.TRAILING)
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGap(56)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addComponent(FrontYard, GroupLayout.PREFERRED_SIZE, 55, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.UNRELATED)
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+								.addComponent(LivingRoom, GroupLayout.PREFERRED_SIZE, 158, GroupLayout.PREFERRED_SIZE)
+								.addGroup(gl_contentPane.createSequentialGroup()
+									.addComponent(Garage, GroupLayout.PREFERRED_SIZE, 72, GroupLayout.PREFERRED_SIZE)
+									.addPreferredGap(ComponentPlacement.RELATED)
+									.addComponent(Kitchen, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE))))
+						.addComponent(textArea))
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
-						.addComponent(Bathroom, GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE)
-						.addComponent(Backyard)
-						.addComponent(Bedroom))
-					.addPreferredGap(ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-						.addComponent(Schedule, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(btnNewButton))
-					.addContainerGap())
+						.addComponent(Bathroom, GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)
+						.addComponent(Bedroom)
+						.addComponent(Backyard))
+					.addGap(26)
+					.addComponent(Schedule, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addGap(54))
 		);
 		contentPane.setLayout(gl_contentPane);
 	}
@@ -310,5 +311,14 @@ public class GUI extends JFrame {
 				popup.show(e.getComponent(), e.getX(), e.getY());
 			}
 		});
+	}
+	protected ImageIcon createImageIcon(String path, String description) {
+		java.net.URL imgURL = getClass().getResource(path);
+		if (imgURL != null) {
+			return new ImageIcon(imgURL, description);
+		} else {
+			System.err.println("Couldn't find file: " + path);
+		return null;
+		}
 	}
 }
