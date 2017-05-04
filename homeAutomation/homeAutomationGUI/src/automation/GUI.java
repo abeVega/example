@@ -237,6 +237,15 @@ public class GUI extends JFrame {
 		textArea.setLineWrap(true);
 		textArea.setEditable(false);
 		
+		JButton btnScheduler = new JButton("Scheduler");
+		btnScheduler.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				//Code in here is executed when the button is clicked
+				
+			}
+		});
+		
 		
 		
 		
@@ -247,9 +256,15 @@ public class GUI extends JFrame {
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_contentPane.createSequentialGroup()
-							.addContainerGap()
-							.addComponent(textArea, GroupLayout.PREFERRED_SIZE, 203, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED)
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
+								.addGroup(gl_contentPane.createSequentialGroup()
+									.addContainerGap()
+									.addComponent(textArea, GroupLayout.PREFERRED_SIZE, 203, GroupLayout.PREFERRED_SIZE)
+									.addPreferredGap(ComponentPlacement.RELATED))
+								.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
+									.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+									.addComponent(btnScheduler, GroupLayout.PREFERRED_SIZE, 118, GroupLayout.PREFERRED_SIZE)
+									.addGap(50)))
 							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
 								.addGroup(gl_contentPane.createSequentialGroup()
 									.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -284,11 +299,16 @@ public class GUI extends JFrame {
 									.addPreferredGap(ComponentPlacement.RELATED)
 									.addComponent(Kitchen, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE))))
 						.addComponent(textArea))
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
-						.addComponent(Bathroom, GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)
-						.addComponent(Bedroom)
-						.addComponent(Backyard))
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
+								.addComponent(Bathroom, GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)
+								.addComponent(Bedroom)
+								.addComponent(Backyard)))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(39)
+							.addComponent(btnScheduler, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)))
 					.addGap(26)
 					.addComponent(Schedule, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 					.addGap(54))
