@@ -9,18 +9,23 @@ public class DataBaseID {
 
 	public ArrayList<BlackList> getBL(){
     	 return this.bl;
-     }       
+     }      
+	public void deleteBL(int a){
+		for (BlackList item : this.bl) {
+			if( item.getpassCode() ==( a ) ){
+                this.bl.remove( item );
+                break;
+			}
+			}
+	}
+	
 
-	    
-     public void printDatabase(){  	
-    	 System.out.println(" ");
-    	 System.out.println("All BlackList Pass Code" + "\n" +
-                             "\n" + this.bl + "\n" );	 
-    	 
-    	 
-     }
-
-     
+     public String printDatabaseBL(){
+   	  String output= "" ;
+	       output +=  "" + " " + this.bl + "\n" ;   
+			return output;
+   	
+   }
   
      
      

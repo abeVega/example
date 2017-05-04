@@ -11,11 +11,14 @@ public class DataBase {
 		return this.person;
 	}
 
-	public void printDatabase() {
-		System.out.println(" ");
-		System.out.println("All people information" + "\n" + "\n" + this.person);
 
-	}
+		 public String printDatabase(){
+	    	  String output= "" ;
+		       output +=  "" + " " + this.person + "\n" ;   
+				return output;
+	    	
+	    }
+	
 
 	public void changeFN(String a, int b) {
 		for (Person item : this.person) {
@@ -28,6 +31,13 @@ public class DataBase {
 		for (Person item : this.person) {
 			if (b == (((Person) item).getID()))
 				((Person) item).setLastName(a);
+		}
+	}
+	
+	public void changePC(Integer a, int b) {
+		for (Person item : this.person) {
+			if (b == (((Person) item).getID()))
+				((Person) item).setPassCode(a);
 		}
 	}
 	

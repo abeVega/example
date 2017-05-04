@@ -19,10 +19,10 @@ public class Verification {
 		DataBaseID dataBL = new DataBaseID(ArrBlackList);
 		
 		System.out.println("House Panel");
-		System.out.println("Press 1 for admin page, 2 for guest page");
+		System.out.println("Press 1 for admin panel, 2 for guest panel");
 		int Hchoice = scanner.nextInt();
 	 while( Hchoice != 1 && Hchoice != 2){
-		  System.out.println("Press 1 for admin page, 2 for guest page");
+		  System.out.println("Press 1 for admin panel, 2 for guest panel");
 		  Hchoice = scanner.nextInt();
 		  if(Hchoice == 1 && Hchoice ==2){
 				  break;
@@ -33,7 +33,7 @@ public class Verification {
 	 Boolean access = false;
 	 int countA =0;
 	 while(Hchoice ==1){
-		 System.out.println("Enter password for admin page");
+		 System.out.println("Enter password for admin panel");
 		 Pinput = scanner.next();
 		 if(Pinput.equals(pass)){
 			access = true; 
@@ -52,8 +52,8 @@ public class Verification {
 	 
 		while (access == true) {
 			System.out.println(
-					"Press 1 to create an account, 2 to open list of accounts , 3 to change user's information , 4 to check blacklist pass code,"
-					+ "5 to delete user account , 6 to go to user panel , 7 to exit");
+					"Press 1 = create account, 2 = list of accounts , 3 = change users info , 4 = blacklist pass code,"
+					+ "5 = delete user account , 6 = go to user panel , 7 = exit");
 			int choice = scanner.nextInt();
 
 			if (choice == 1) {
@@ -109,14 +109,14 @@ public class Verification {
 
 			if (choice == 2) {
 				
-				data1.printDatabase();
+				System.out.println(data1.printDatabase());
 			}
 			if(choice ==4){
 				
-				dataBL.printDatabase();
+				dataBL.printDatabaseBL();
 			}
 			if(choice ==5){
-				System.out.println("Enter an ID number to change user account infor ");
+				System.out.println("Enter an ID number to delete user account ");
 				Integer idNumb = scanner.nextInt();
 				data1.delete(idNumb);
 			}

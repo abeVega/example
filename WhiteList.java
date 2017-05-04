@@ -1,23 +1,22 @@
 
-public class BlackList {
+public class WhiteList {
 	protected Integer passCode;
 	
-public BlackList(){}
+public WhiteList(){}
 	
-	public BlackList(int passCode)
+	public WhiteList(int passCode)
 	{
 		this.passCode = passCode;
 
 	}
 	
-	public Integer getpassCode()
+	public Integer WgetpassCode()
 	{
 		return passCode;
 	}
 	
 	
-	
-	public void setpassCode(Integer passCode)
+	public void WsetpassCode(Integer passCode)
 	{
 		this.passCode = passCode;
 	}
