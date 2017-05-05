@@ -28,8 +28,8 @@ public class TESTGUI extends Application {
 	}
 
 	boolean door;
-	int fail =0;
-	
+	int fail = 0;
+
 	@Override
 	public void start(Stage primaryStage) {
 
@@ -37,7 +37,7 @@ public class TESTGUI extends Application {
 		List<String> list = new ArrayList<String>();
 		List<String> idCard = new ArrayList<String>();
 
-		primaryStage.setTitle(" Home Automation ");
+		primaryStage.setTitle(" Home Automation Log in  ");
 		GridPane grid = new GridPane();
 		grid.setAlignment(Pos.TOP_CENTER);
 		grid.setHgap(10);
@@ -53,32 +53,30 @@ public class TESTGUI extends Application {
 
 		TextField userTextField = new TextField();
 		grid.add(userTextField, 1, 1);
-		
-
 
 		Button btn = new Button("Sign in");
 		HBox hbBtn = new HBox(10);
 		hbBtn.setAlignment(Pos.BOTTOM_RIGHT);
 		hbBtn.getChildren().add(btn);
 
-		Text t1 = new Text();			
-				grid.add(t1, 1, 8);	
+		Text t1 = new Text();
+		grid.add(t1, 1, 8);
+		Button bDisable = new Button("Enable Log In ");
 
 		grid.add(hbBtn, 1, 2);
 		final Text actiontarget = new Text();
 		grid.add(actiontarget, 1, 6);
-		
+
 		btn.setOnAction(new EventHandler<ActionEvent>() {
-			
+
 			@Override
 			public void handle(ActionEvent e) {
-				fail++;	
-				
+				fail++;
+
 				String getText = userTextField.getText();
 				System.out.println(getText);
 
 				list.add(getText);
-				
 
 				for (String line : list) {
 					String[] res = line.split(",");
@@ -99,29 +97,29 @@ public class TESTGUI extends Application {
 
 				for (Integer igr : listID) {
 					if (intCheckList.contains(igr)) {
-						t1.setText("You Have Logged In Successfully");	
-						String musicFile = "success.mp3";     
+						t1.setText("You Have Logged In Successfully");
+						String musicFile = "success.mp3";
 
 						Media sound = new Media(new File(musicFile).toURI().toString());
 						MediaPlayer mediaPlayer = new MediaPlayer(sound);
 						mediaPlayer.play();
 						door = true;
-					} else {					
-						t1.setText("login failure, try again" );
-						String musicFile = "fail.mp3";     
+					} else {
+						t1.setText("login failure, try again");
+						String musicFile = "fail.mp3";
 
 						Media sound = new Media(new File(musicFile).toURI().toString());
 						MediaPlayer mediaPlayer = new MediaPlayer(sound);
 						mediaPlayer.play();
 						door = false;
-						if( fail == 3){
+						if (fail == 3) {
 							t1.setText("System paused");
-							  userTextField.setDisable(true);
-							 
+							userTextField.setDisable(true);
 						}
+
 					}
 				}
-				
+
 				if (door == false) {
 					for (Integer igr2 : listID) {
 						if (!intCheckList.contains(igr2)) {
@@ -130,49 +128,60 @@ public class TESTGUI extends Application {
 						}
 					}
 				}
-				
-				if(fail == 3){
-					  fail = 0;
-					 Task<Void> sleeper = new Task<Void>() {
-				            @Override
-				            protected Void call() throws Exception {
-				                try {
-				                    Thread.sleep(5000);
-				                  
-				                } catch (InterruptedException e) {
-				                }
-				                return null;
-				            }
-				        };
-				        sleeper.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
-				            @Override
-				            public void handle(WorkerStateEvent event) {
-				            	
-				            	
-				            	System.out.println(fail);
-				            	
-				            	t1.setText("Please tap the card again");	
-				            }
-				            
-				        });
-				        new Thread(sleeper).start();	
-				       
-				        if(fail == 0){
-				        	userTextField.setDisable(false);
-				        }
+
+				if (fail == 3) {
+
+					Task<Void> sleeper = new Task<Void>() {
+						@Override
+						protected Void call() throws Exception {
+							try {
+								Thread.sleep(5000);
+
+							} catch (InterruptedException e) {
+							}
+							return null;
+						}
+					};
+					sleeper.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
+						@Override
+						public void handle(WorkerStateEvent event) {
+
+							System.out.println(fail);
+
+							t1.setText("Please tap the card again");
+							grid.add(bDisable, 3, 8);
+
+						}
+
+					});
+
+					bDisable.setOnAction(new EventHandler<ActionEvent>() {
+
+						@Override
+						public void handle(ActionEvent arg0) {
+							userTextField.setDisable(false);
+
+							fail = 0;
+							System.out.println(fail);
+							if (fail == 0) {
+
+								bDisable.setVisible(false);
+							}
+						}
+
+					});
+
+					new Thread(sleeper).start();
+
 				}
-				
-				
-				
-	
+
 				if (door == true) {
 					Button Veri = new Button(" Control Panel ");
 					HBox VeriB = new HBox(10);
 					VeriB.setAlignment(Pos.BOTTOM_LEFT);
 					VeriB.getChildren().add(Veri);
 					grid.add(VeriB, 2, 8);
-					
-					
+
 					Veri.setOnAction(new EventHandler<ActionEvent>() {
 						@Override
 						public void handle(ActionEvent e) {
@@ -187,15 +196,9 @@ public class TESTGUI extends Application {
 			}
 		});
 
-		
-		
-		
-		
 		Scene scene = new Scene(grid, 800, 800);
 		primaryStage.setScene(scene);
 		primaryStage.show();
 	}
-	
-	
-	
+
 }
