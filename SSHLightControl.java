@@ -2,27 +2,88 @@ import com.jcraft.jsch.Channel;
 import com.jcraft.jsch.ChannelExec;
 import com.jcraft.jsch.JSch;
 import com.jcraft.jsch.Session;
+
+import javafx.application.Platform;
+
 import java.io.InputStream;
 import java.util.Properties;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class SSHLightControl {
+	int hour, minute, second;
 
     public SSHLightControl(int input) {
-        try {
-        	String command = null;
-        	
-        	if(input == 1) {
-        		command = "cd Desktop; ./lightOn.sh";
-        	}
-        	else if (input == 0) {
-        		command = "cd Desktop; ./lightOff.sh";
-        	}
-        	
+    	String command = null;
+    	
+    	if(input == 1) {
+    		command = "cd Desktop; ./lightOn.sh";
+    	}
+    	else if (input == 0) {
+    		command = "cd Desktop; ./lightOff.sh";
+    		
+    	}
+    	sendCommand(command);
+    	
+    }
+    
+    public SSHLightControl(int hourInput, int minuteInput, int secondInput) {
+    	hour = hourInput;
+    	minute = minuteInput;
+    	second = secondInput;
+    	
+    	
+		String command = "cd Desktop; ./lightOn.sh";
+		sendCommand(command);
+		
+		Timer timer = new Timer();
+		
+		timer.schedule(new TimerTask() {
+
+			@Override
+			public void run() {
+				
+				if (hour > 0 && minute == 0 && second == 0) {
+					hour--;
+					minute = 59;
+					second = 59;
+				}
+				
+				if (hour == 0 && minute > 0 && second == 0) {
+					minute--;
+					second = 59;
+				}
+			
+				second--;
+				
+				if (hour == 0 && minute == 0 && second == 0) {
+					timer.cancel();
+					timer.purge();
+				}
+				
+				Platform.runLater(new Runnable() {
+
+					public void run() {
+						
+						
+						if(hour == 0 && minute == 0 && second == 0) {
+							String command = "cd Desktop; ./lightOff.sh";
+							sendCommand(command);
+						}
+					}
+				});
+				
+			}		
+		}, 0, 1000);
+	}
+
+	private void sendCommand(String command) {
+		try {
         	System.out.println(command);
         	
             JSch jsch = new JSch();
 
-            Session session = jsch.getSession("pi", "169.254.107.255", 22);
+            Session session = jsch.getSession("pi", "192.168.1.206", 22);
 
             Properties config = new Properties();
             config.put("StrictHostKeyChecking", "no");
@@ -30,7 +91,6 @@ public class SSHLightControl {
 
             session.setPassword("pi");
             session.connect();
-
 
             Channel channel = session.openChannel("exec");
             ((ChannelExec) channel).setCommand(command);
@@ -65,5 +125,6 @@ public class SSHLightControl {
         } catch (Exception e) {
             System.out.println(e);
         }
-    }
+		
+	}
 }
